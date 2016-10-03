@@ -22,7 +22,7 @@ def impl(context):
 @given('I am a logged un user')
 def impl(context):
     user_to_login = UserFactory(email='log.me.in@test.test')
-    context.browser.visit(context.config.server_url + 'accounts/login/')
+    context.browser.visit(context.config.server_url + '/accounts/login/')
 
     context.browser.fill('username', user_to_login.email)
     context.browser.fill('password', 'pass')
@@ -32,7 +32,7 @@ def impl(context):
 
 @when('I filter the list of users by "{checked}"')
 def impl(context, checked):
-    context.browser.visit(context.condif.server_url)
+    context.browser.visit(context.config.server_url)
 
     checked = checked.split(', ');
     for check in checked:

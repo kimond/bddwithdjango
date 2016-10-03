@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        {% for interest in interests %}
+            <label for="id_{{ interest.name }}">{{ interest.name }}
+                <input type="checkbox" name="interests" value="{{ interest.name }}"/>
+            </label>
+        {% endfor %}
+        <input type="submit">
+    </form>
+
+    {% for filtered_user in filtered_users %}
+        <div class="user-card"> {{ filtered_user.first_name }}</div>
+    {% endfor %}
+{% endblock %}
